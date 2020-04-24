@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" type="text/css" content="width=device-width, initial-scale=1.0" />
+    {% load static %}
+    <link rel="stylesheet" href="{% static "data/styles.css" %}" />
+    <title>Data Overview</title>
+  </head>
+  <body>
+  <div>
+    <strong>Hello there, {{ name }}!</strong> It's {{ date | date:"l, d F, Y" }}
+    at {{ date | time:"H:i:s" }}
+    </div>
+    
+  </body>
+</html>
