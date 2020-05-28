@@ -1,18 +1,16 @@
 from django.urls import path
 from data import views
-from data.models import LogMessage
+from data.models import StateData
 
 home_list_view = views.HomeListView.as_view(
-    # :5 limits the results to the five most recent
-    queryset=LogMessage.objects.order_by("-log_date")[:5],
-    context_object_name="message_list",
+    queryset=StateData.objects.all(),
+    context_object_name="stateData",
     template_name="data/home.html",
 )
-
 
 urlpatterns = [
     path("", home_list_view, name="home"),
     path("about/", views.about, name="about"),
     path("contact/", views.contact, name="contact"),
-    path("log/", views.log_message, name="log"),
+    # path("log/", views.log_message, name="log"),
 ]

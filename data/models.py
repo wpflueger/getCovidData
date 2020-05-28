@@ -2,11 +2,21 @@ from django.db import models
 from django.utils import timezone
 
 
-class LogMessage(models.Model):
-    message = models.CharField(max_length=300)
-    log_date = models.DateTimeField("date logged")
+class StateData(models.Model):
+    state = models.CharField(max_length=50)
+    cases = models.IntegerField()
+    deaths = models.IntegerField()
 
     def __str__(self):
-        """Returns a string representation of a message."""
-        date = timezone.localtime(self.log_date)
-        return f"'{self.message}' logged on {date.strftime('%A, %d %B, %Y at %X')}"
+        return self.state
+
+
+class CountyData(models.Model):
+    cdate = models.DateField(auto_now=False, auto_now_add=False)
+    state = models.CharField(max_length=50)
+    county = models.CharField(max_length=50)
+    cases = models.IntegerField()
+    deaths = models.IntegerField()
+
+    def __str__(self):
+        return self.state + self.county
