@@ -28,7 +28,7 @@ class Command(BaseCommand):
         cur = conn.cursor()
         today = date.today()
         df = pd.read_sql_query(
-            "SELECT * FROM usTimeSeries where date="+today.strftime("%b-%d-%Y"), conn)
+            "SELECT * FROM usTimeSeries where date='"+today.strftime("%b-%d-%Y")+"'", conn)
         us = df.groupby(['state']).sum()
 
         for i in us.iterrows():

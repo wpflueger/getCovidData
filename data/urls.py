@@ -12,5 +12,4 @@ urlpatterns = [
     path("", home_list_view, name="home"),
     path("about/", views.about, name="about"),
     path("contact/", views.contact, name="contact"),
-    # path("log/", views.log_message, name="log"),
 ]
